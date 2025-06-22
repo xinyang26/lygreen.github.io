@@ -15,12 +15,50 @@ onMounted(() => {
 
     createdTime.value = formatISOString(post.value.createdTime);
     updatedTime.value = formatISOString(post.value.updatedTime);
+
+    loadDiscussion();
 });
 
 function formatISOString(isoString) {
     const date = new Date(isoString);
     return `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} ` +
         `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
+}
+
+function loadDiscussion() {
+    // script src="https://giscus.app/client.js"
+    //     data-repo="LYGreen/make-blog"
+    //     data-repo-id="R_kgDOO_l9dQ"
+    //     data-category="Article discussions"
+    //     data-category-id="DIC_kwDOO_l9dc4Cr1qV"
+    //     data-mapping="pathname"
+    //     data-strict="0"
+    //     data-reactions-enabled="1"
+    //     data-emit-metadata="0"
+    //     data-input-position="bottom"
+    //     data-theme="preferred_color_scheme"
+    //     data-lang="zh-CN"
+    //     crossorigin="anonymous"
+    //     async>
+    // script>
+
+    const comments = document.getElementById('comments');
+    const script = document.createElement('script');
+    script.src = "https://giscus.app/client.js";
+    script.setAttribute('data-repo', "LYGreen/make-blog");;
+    script.setAttribute('data-repo-id', "R_kgDOO_l9dQ");
+    script.setAttribute('data-category', "Article discussions");
+    script.setAttribute('data-category-id', "DIC_kwDOO_l9dc4Cr1qV");
+    script.setAttribute('data-mapping', "pathname");
+    script.setAttribute('data-strict', "0");
+    script.setAttribute('data-reactions-enabled', "1");
+    script.setAttribute('data-emit-metadata', "0");
+    script.setAttribute('data-input-position', "bottom");
+    script.setAttribute('data-theme', "light");
+    script.setAttribute('data-lang', "zh-CN");
+    script.crossOrigin = 'anonymous';
+    script.async = true;
+    comments.appendChild(script);
 }
 
 </script>
@@ -48,6 +86,7 @@ function formatISOString(isoString) {
                 修改时间：{{ updatedTime }}
             </span>
         </div>
+        <div id="comments"></div>
     </div>
 </template>
 
