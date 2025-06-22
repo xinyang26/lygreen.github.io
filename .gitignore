@@ -1,0 +1,5 @@
+node_modules
+out
+*-demo.md
+*.bat
+.vitepress/cache
