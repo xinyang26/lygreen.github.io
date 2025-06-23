@@ -19,7 +19,7 @@ function toggleTheme() {
         </div>
 
         <div class="right">
-            <a href="https://github.com/LYGreen/make-blog">Github</a>
+            <a href="https://github.com/LYGreen/make-blog" target="_blank">Github</a>
 
         </div>
         <!-- <button :onclick="toggleTheme">aa</button> -->
