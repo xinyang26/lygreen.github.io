@@ -1,33 +1,8 @@
 <script setup>
 
-import { ref, onMounted } from 'vue'
 import { useData } from 'vitepress';
 
-const { params, frontmatter } = useData();
-
-const base = import.meta.env.BASE_URL
-
-const post = ref();
-const createdTime = ref('');
-const updatedTime = ref('');
-const readingTime = ref();
-
-// onMounted(() => {
-//     const url = new URL(window.location.href)
-//     post.value = posts.find(p => base + p.url === url.pathname)
-
-//     createdTime.value = formatISOString(post.value.createdTime);
-//     updatedTime.value = formatISOString(post.value.updatedTime);
-//     readingTime.value = post.value.readingTime;
-
-//     loadDiscussion();
-// });
-
-// function formatISOString(isoString) {
-//     const date = new Date(isoString);
-//     return `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} ` +
-//         `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
-// }
+const { frontmatter } = useData();
 
 function loadDiscussion() {
     // script src="https://giscus.app/client.js"

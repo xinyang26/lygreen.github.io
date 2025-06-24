@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { onBeforeMount, onMounted } from 'vue';
+import { onMounted } from 'vue';
 
 interface Item {
     level: number,
