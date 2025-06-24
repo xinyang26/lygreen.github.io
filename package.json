@@ -1,10 +1,16 @@
 {
   "scripts": {
-    "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "new-post": "node new-post.mjs",
+    
+    "update-posts": "node update-posts.mjs",
+    "update-all": "npm run update-posts", 
+
+    "docs:dev": "npm run update-all && vitepress dev",
+    "docs:build": "npm run update-all && vitepress build",
+    "docs:preview": "npm run update-all && vitepress preview"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "vitepress": "^1.6.3"
   },
   "devDependencies": {
