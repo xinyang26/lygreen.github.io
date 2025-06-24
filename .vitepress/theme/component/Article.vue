@@ -1,29 +1,33 @@
 <script setup>
 
 import { ref, onMounted } from 'vue'
-import { data as posts } from '../data/post.data.mts'
+import { useData } from 'vitepress';
+
+const { params, frontmatter } = useData();
 
 const base = import.meta.env.BASE_URL
 
 const post = ref();
 const createdTime = ref('');
 const updatedTime = ref('');
+const readingTime = ref();
 
-onMounted(() => {
-    const url = new URL(window.location.href)
-    post.value = posts.find(p => base + p.url === url.pathname)
+// onMounted(() => {
+//     const url = new URL(window.location.href)
+//     post.value = posts.find(p => base + p.url === url.pathname)
 
-    createdTime.value = formatISOString(post.value.createdTime);
-    updatedTime.value = formatISOString(post.value.updatedTime);
+//     createdTime.value = formatISOString(post.value.createdTime);
+//     updatedTime.value = formatISOString(post.value.updatedTime);
+//     readingTime.value = post.value.readingTime;
 
-    loadDiscussion();
-});
+//     loadDiscussion();
+// });
 
-function formatISOString(isoString) {
-    const date = new Date(isoString);
-    return `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} ` +
-        `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
-}
+// function formatISOString(isoString) {
+//     const date = new Date(isoString);
+//     return `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} ` +
+//         `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
+// }
 
 function loadDiscussion() {
     // script src="https://giscus.app/client.js"
@@ -66,13 +70,16 @@ function loadDiscussion() {
 <template>
     <div id="article">
         <div class="header">
-            <strong class="title">{{ post?.title }}</strong>
-            <span class="description">{{ post?.description }}</span>
+            <strong class="title">{{ frontmatter.title }}</strong>
+            <span class="description">{{ frontmatter.description }}</span>
             <span>
-                创建时间：{{ createdTime }}
+                🕒创建时间：{{ frontmatter.createdTime }}
             </span>
             <span>
-                修改时间：{{ updatedTime }}
+                🕒修改时间：{{ frontmatter.updatedTime }}
+            </span>
+            <span>
+                📖阅读时间：{{ frontmatter.readingTime }} 分钟
             </span>
         </div>
         <div class="body">
@@ -80,10 +87,10 @@ function loadDiscussion() {
         </div>
         <div class="footer">
             <span>
-                创建时间：{{ createdTime }}
+                🕒创建时间：{{ frontmatter.createdTime }}
             </span>
             <span>
-                修改时间：{{ updatedTime }}
+                🕒修改时间：{{ frontmatter.updatedTime }}
             </span>
         </div>
         <div id="comments"></div>

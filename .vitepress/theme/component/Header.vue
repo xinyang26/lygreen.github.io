@@ -12,8 +12,8 @@ function toggleTheme() {
 <template>
     <div id="header">
         <div class="left">
-            <a id="home" :href="base">首页</a>
-            <a :href="base + 'articles/'">文章</a>
+            <a id="home" :href="base" target="_self">首页</a>
+            <a :href="base + 'articles/pages/1'" target="_self">文章</a>
             <!-- <a href="#">分类</a>
             <a href="#">标签</a> -->
         </div>

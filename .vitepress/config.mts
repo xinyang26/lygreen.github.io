@@ -1,7 +1,8 @@
 import { defineConfig, defineConfigWithTheme } from 'vitepress'
+import ThemeConfig from './theme/themeConfig'
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default defineConfigWithTheme<ThemeConfig>({
   srcDir: "./src",
   outDir: "./out",
   title: "自建博客",
@@ -18,6 +19,6 @@ export default defineConfig({
   },
   base: "/make-blog/",
   themeConfig: {
-    
+    data: "Hello World",
   }
 })
