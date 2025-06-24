@@ -3,7 +3,7 @@ import path from 'path';
 
 const srcDir = path.resolve(import.meta.dirname, "../../../src");
 
-console.log(srcDir);
+// console.log(srcDir);
 
 export function getReadingTime(text: string | undefined) {
     const cnCharCount = (text?.match(/[\u4e00-\u9fa5]/g) || []).length;

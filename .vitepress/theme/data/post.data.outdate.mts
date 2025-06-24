@@ -1,6 +1,6 @@
 import { createContentLoader } from "vitepress"
-import { Post } from "../interface/post.mts"
-import { getCreatedTime, getReadingTime, getUpdatedTime } from "../util/util.mts"
+import { Post } from "../interface/post.outdate.mts"
+import { getCreatedTime, getReadingTime, getUpdatedTime } from "../util/util.outdate.mts"
 import path from "path"
 
 declare const data: Post[]
@@ -13,9 +13,6 @@ export default createContentLoader("posts/!(*-demo).md", {
             const fp = path.parse(page.url);
             const p = path.join('./', fp.dir, fp.name + ".md");
             const relativeUrl = path.join('./', page.url).replace('\\', '/');
-            
-
-            console.log(relativeUrl);
 
             let post: Post = {
                 title: page.frontmatter.title ?? "",
