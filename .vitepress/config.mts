@@ -18,6 +18,27 @@ export default defineConfigWithTheme<ThemeConfig>({
     }
   },
   base: "/make-blog/",
+  head: [
+    [
+      'script',
+      {},
+      `
+      (function() {
+        const localTheme = localStorage.getItem('data-theme');
+        if (localTheme != null) {
+            document.documentElement.setAttribute('data-theme', localTheme);
+        } else {
+          const media = window.matchMedia('(prefers-color-scheme: dark)');
+          if (media.matches) {
+              document.documentElement.setAttribute('data-theme', 'dark');
+          } else {
+              document.documentElement.setAttribute('data-theme', 'light');
+          }
+        }
+      })();
+      `
+    ]
+  ],
   themeConfig: {
     data: "Hello World",
   }

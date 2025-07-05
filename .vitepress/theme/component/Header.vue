@@ -26,21 +26,11 @@ function onMediaChanged(e: MediaQueryListEvent) {
     } else {
         document.documentElement.setAttribute('data-theme', 'light');
     }
+    localStorage.removeItem('data-theme');
 }
 
 onMounted(() => {
-    const localIteme = localStorage.getItem('data-theme');
-    if (localIteme != null) {
-        document.documentElement.setAttribute('data-theme', localIteme);
-        return;
-    }
-    
     media = window.matchMedia('(prefers-color-scheme: dark)');
-    if (media.matches) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-    }
     media.addEventListener('change', onMediaChanged);
     hasEvent = true;
 });
@@ -52,8 +42,8 @@ onMounted(() => {
         <div class="left">
             <a id="home" :href="base" target="_self">首页</a>
             <a :href="base + 'articles/pages/1'" target="_self">文章</a>
-            <a :href="base + 'category'" target="_self">分类</a>
-            <a :href="base + 'tag'" target="_self">标签</a>
+            <a :href="base + 'category/'" target="_self">分类</a>
+            <a :href="base + 'tag/'" target="_self">标签</a>
         </div>
 
         <div class="right">
