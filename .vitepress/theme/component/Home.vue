@@ -21,4 +21,9 @@
     transform: translate(-50%, -50%);
 }
 
+span {
+    color: var(--text-color);
+    transition: var(--transition-attribute);
+}
+
 </style>

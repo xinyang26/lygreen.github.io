@@ -7,7 +7,6 @@ const { params } = useData();
 const posts = params.value.posts;
 const currentPage = params.value.page;
 const totalPage = params.value.totalPage;
-console.log(params.value.posts);
 
 </script>
 
@@ -20,7 +19,7 @@ console.log(params.value.posts);
             </a>
             <div class="bottom">
                 <div class="category">
-                    <a href="'#'" v-for="(e, i) in item.category" v-bind:key="i">
+                    <a :href="'#'" v-for="(e, i) in item.category" v-bind:key="i">
                         {{ e }}
                     </a>
                 </div>
@@ -58,52 +57,62 @@ console.log(params.value.posts);
     margin-right: 32px;
 }
 
-#articles .pages .active {
-    background-color: #afafaf;
-}
 
-#articles .pages {
+.pages {
     display: flex;
     flex-direction: row;
     gap: 0px;
 }
 
-#articles .pages .page-block {
-    display: flex;
-    width: 32px;
-    height: 48px;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 1px 1px 3px #333333;
+.pages .active {
+    background-color: var(--main-bg-color);
+    box-shadow: var(--emphasize-shadow);
 }
 
-#articles .item {
+.pages div {
+    display: flex;
+    width: 30px;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 8px;
+    background-color: var(--secondary-bg-color);
+    box-shadow: var(--basic-card-shadow);
+}
+
+.item {
     display: flex;
     flex-direction: column;
     min-height: 100px;
     margin-top: 16px;
     margin-bottom: 16px;
     padding: 16px 16px 16px 16px;
-    box-shadow: 1px 1px 3px #333333;
+
+    border-radius: 8px;
+    background-color: var(--secondary-bg-color);
+    box-shadow: var(--float-component-shadow);
+    transition: var(--transition-attribute);
 }
 
-#articles .description {
+.description {
     flex: 1;
 }
 
-#articles .bottom {
+.bottom {
     bottom: 0px;
     
 }
 
-#articles .bottom a {
-    background-color: whitesmoke;
-
+.bottom a {
     padding: 8px 8px 8px 8px;
     border-radius: 5px;
+    
+    background-color: var(--main-bg-color);
+    box-shadow: var(--float-component-shadow);
 }
 
-#articles .category {
+.category {
     float: left;
     display: flex;
     flex-direction: row;
@@ -114,7 +123,7 @@ console.log(params.value.posts);
     margin-bottom: 8px;
 }
 
-#articles .tag {
+.tag {
     float: right;
     display: flex;
     flex-direction: row;

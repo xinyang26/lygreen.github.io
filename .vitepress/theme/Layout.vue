@@ -4,12 +4,17 @@ import { useData } from 'vitepress'
 import Home from './component/Home.vue';
 import Header from './component/Header.vue'
 import Sidebar from './component/Sidebar.vue';
+import Category from './component/Category.vue';
+import CategoryPage from './component/CategoryPage.vue';
+import Tag from './component/Tag.vue';
+import TagPage from './component/TagPage.vue';
 import Article from './component/Article.vue';
 import ArticleTOC from './component/ArticleTOC.vue';
 import Articles from './component/Articles.vue';
 import Page404 from './component/Page404.vue';
 
 const { site, page, frontmatter } = useData()
+
 
 </script>
 
@@ -18,24 +23,21 @@ const { site, page, frontmatter } = useData()
     <Page404 v-if="page.isNotFound" />
     <Home v-else-if="frontmatter.layout === 'home'" />
     <Articles v-else-if="frontmatter.layout === 'articles'" />
+    <Category v-else-if="frontmatter.layout === 'category'" />
+    <CategoryPage v-else-if="frontmatter.layout === 'category-page'" />
+    <Tag v-else-if="frontmatter.layout === 'tag'" />
+    <TagPage v-else-if="frontmatter.layout === 'tag-page'" />
     <div id="h-container" v-else>
         <!-- <Sidebar /> -->
         
         <Article />
         <ArticleTOC />
     </div>
-    <!-- <div id="v-container">
-    </div> -->
-
 </template>
 
 <style scoped>
 
-#v-container {
-    display: flex;
-    gap: 20px;
-    flex-direction: column;
-}
+
 
 #h-container {
     display: flex;

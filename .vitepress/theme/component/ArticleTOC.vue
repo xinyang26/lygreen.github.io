@@ -12,7 +12,6 @@ interface Item {
 onMounted(() => {
     const toc = buildTOC();
     createTOCElements("article-toc", toc);
-    console.log(toc);
 });
 
 function buildTOC() : Item[] {
@@ -99,22 +98,9 @@ function createTOCElements(elementId: string, toc: Item[]) {
     overflow-y: auto;
 
     padding: 16px 16px 16px 16px;
-    box-shadow: 1px 1px 5px #333333;
-}
 
-#article-toc {
-    position: sticky;
-    top: calc(50px + 16px);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    min-width: 240px;
-    height: 100%;
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;
-
-    padding: 16px 16px 16px 16px;
-    box-shadow: 1px 1px 5px #333333;
+    background-color: var(--secondary-bg-color);
+    box-shadow: var(--float-component-shadow);
 }
 
 @media (max-width: 1156px) {
@@ -142,7 +128,19 @@ function createTOCElements(elementId: string, toc: Item[]) {
 }
 
 #article-toc a:hover {
-    color: gray;
+    color: var(--secondary-text-color);
+}
+
+#article-toc::-webkit-scrollbar {
+    background-color: var(--secondary-bg-color);
+    transition: background-color 0.8s;
+    width: 8px;
+    height: 8px;
+}
+
+#article-toc::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-text-color);
+    border-radius: 8px;
 }
 
 </style>

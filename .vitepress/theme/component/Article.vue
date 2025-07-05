@@ -1,8 +1,14 @@
-<script setup>
+<script setup lang="ts">
 
+import { onMounted } from 'vue';
 import { useData } from 'vitepress';
+import theme from 'vitepress/theme';
 
 const { frontmatter } = useData();
+
+onMounted(() => {
+    loadDiscussion();
+});
 
 function loadDiscussion() {
     // script src="https://giscus.app/client.js"
@@ -21,6 +27,7 @@ function loadDiscussion() {
     //     async>
     // script>
 
+    const theme = document.documentElement.getAttribute('data-theme') ?? 'light';
     const comments = document.getElementById('comments');
     const script = document.createElement('script');
     script.src = "https://giscus.app/client.js";
@@ -33,11 +40,11 @@ function loadDiscussion() {
     script.setAttribute('data-reactions-enabled', "1");
     script.setAttribute('data-emit-metadata', "0");
     script.setAttribute('data-input-position', "bottom");
-    script.setAttribute('data-theme', "light");
+    script.setAttribute('data-theme', theme);
     script.setAttribute('data-lang', "zh-CN");
     script.crossOrigin = 'anonymous';
     script.async = true;
-    comments.appendChild(script);
+    comments?.appendChild(script);
 }
 
 </script>
@@ -47,32 +54,36 @@ function loadDiscussion() {
         <div class="header">
             <strong class="title">{{ frontmatter.title }}</strong>
             <span class="description">{{ frontmatter.description }}</span>
-            <span>
-                🕒创建时间：{{ frontmatter.createdTime }}
+            <hr>
+            <span class="time">
+                📅创建时间：{{ frontmatter.createdTime }}
             </span>
-            <span>
+            <span class="time">
                 🕒修改时间：{{ frontmatter.updatedTime }}
             </span>
-            <span>
+            <span class="time">
                 📖阅读时间：{{ frontmatter.readingTime }} 分钟
             </span>
         </div>
+        <hr>
         <div class="body">
             <Content />
         </div>
+        <hr>
         <div class="footer">
-            <span>
-                🕒创建时间：{{ frontmatter.createdTime }}
+            <span class="time">
+                📅创建时间：{{ frontmatter.createdTime }}
             </span>
-            <span>
+            <span class="time">
                 🕒修改时间：{{ frontmatter.updatedTime }}
             </span>
         </div>
+        <hr>
         <div id="comments"></div>
     </div>
 </template>
 
-<style>
+<style scoped>
 
 #article {
     width: 100%;
@@ -82,7 +93,8 @@ function loadDiscussion() {
     padding-top: 16px;
     padding-bottom: 16px;
 
-    box-shadow: 1px 1px 5px #333333;
+    background-color: var(--secondary-bg-color);
+    box-shadow: var(--float-component-shadow);
 }
 
 #article .header .title {
@@ -97,59 +109,16 @@ function loadDiscussion() {
     font-size: 24px;
 }
 
-#article .header span {
-    display: block;
-}
-
-#article .body {
-    
-}
-
-#article .body pre {
-
-}
-
-#article .body .vp-adaptive-theme {
-    position: relative;
-
-    padding: 8px 8px 8px 8px;
-    border-radius: 5px;
-
-    background-color: whitesmoke;
-}
-
-#article .body .vp-code {
-    overflow-x: auto;
-}
-
-#article .body .copy {
-    float: right;
-}
-
-#article .body .copy::after {
-    content: "复制代码";
-}
-
-#article .body .copied::after {
+#article .time {
+    font-size: 14px;
     color: grey;
-    content: "复制成功";
 }
 
-#article .body .lang {
-
-}
-
-#article .footer {
-    
-}
-
-#article .footer span {
+#article .header, .footer, span {
     display: block;
 }
 
-.line span {
-    color: var(--shiki-light);
-}
+
 
 
 
