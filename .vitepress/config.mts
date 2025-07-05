@@ -37,7 +37,7 @@ export default defineConfigWithTheme<ThemeConfig>({
         }
       })();
       `
-    ]
+    ],
   ],
   themeConfig: {
     data: "Hello World",

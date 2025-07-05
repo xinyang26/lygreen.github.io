@@ -40,15 +40,15 @@ onMounted(() => {
 <template>
     <div id="header">
         <div class="left">
-            <a id="home" :href="base" target="_self">首页</a>
-            <a :href="base + 'articles/pages/1'" target="_self">文章</a>
-            <a :href="base + 'category/'" target="_self">分类</a>
-            <a :href="base + 'tag/'" target="_self">标签</a>
+            <a class="block home" :href="base" target="_self">首页</a>
+            <a class="block article" :href="base + 'articles/pages/1'" target="_self">文章</a>
+            <a class="block category" :href="base + 'category/'" target="_self">分类</a>
+            <a class="block tag" :href="base + 'tag/'" target="_self">标签</a>
         </div>
 
         <div class="right">
             <button @click="toggleTheme">切换主题</button>
-            <a href="https://github.com/LYGreen/make-blog" target="_blank">Github</a>
+            <a class="block github" href="https://github.com/LYGreen/make-blog" target="_blank">Github</a>
 
         </div>
     </div>
@@ -69,8 +69,16 @@ onMounted(() => {
     height: 50px;
 }
 
-#home {
+.block {
     text-align: center;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, var(--text-transition-attribute);
+}
+
+.block:hover {
+    transform: translateY(-2px);
+    color: var(--secondary-text-color);
 }
 
 button {

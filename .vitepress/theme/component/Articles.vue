@@ -3,10 +3,32 @@
 const base = import.meta.env.BASE_URL;
 
 import { useData } from 'vitepress';
+import { onMounted } from 'vue';
 const { params } = useData();
 const posts = params.value.posts;
 const currentPage = params.value.page;
 const totalPage = params.value.totalPage;
+
+const COLOR_COUNT = 6;
+const colors = [];
+for (let i = 0; i < COLOR_COUNT; i++) {
+    colors.push('color' + i);
+}
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
+onMounted(() => {
+    const categories = document.querySelectorAll('.category a');
+    const tags = document.querySelectorAll('.tag a');
+    for (let i = 0; i < categories.length; i++) {
+        categories[i].classList.add(colors[getRandomInt(0, colors.length)]);
+    }
+    for (let i = 0; i < tags.length; i++) {
+        tags[i].classList.add(colors[getRandomInt(0, colors.length)]);
+    }
+});
 
 </script>
 
@@ -108,8 +130,12 @@ const totalPage = params.value.totalPage;
     padding: 8px 8px 8px 8px;
     border-radius: 5px;
     
-    background-color: var(--main-bg-color);
     box-shadow: var(--float-component-shadow);
+    transition: transform 0.3s ease, var(--transition-attribute, background-color 0s);
+}
+
+.bottom a:hover {
+    transform: translateY(-2px);
 }
 
 .category {
@@ -134,6 +160,52 @@ const totalPage = params.value.totalPage;
     margin-bottom: 8px;
 }
 
+.color0 {
+    background-color: #FFCCCC;
+}
 
+[data-theme='dark'] .color0 {
+    background-color: #993333;
+}
+
+.color1 {
+    background-color: #FFCC99;
+}
+
+[data-theme='dark'] .color1 {
+    background-color: #996600;
+}
+
+.color2 {
+    background-color: #CCFFCC;
+}
+
+[data-theme='dark'] .color2 {
+    background-color: #669933;
+}
+
+.color3 {
+    background-color: #99CC33;
+}
+
+[data-theme='dark'] .color3 {
+    background-color: #006633;
+}
+
+.color4 {
+    background-color: #CCFF99;
+}
+
+[data-theme='dark'] .color4 {
+    background-color: #339999;
+}
+
+.color5 {
+    background-color: #99CCFF;
+}
+
+[data-theme='dark'] .color5 {
+    background-color: #006699;
+}
 
 </style>

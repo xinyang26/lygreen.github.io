@@ -116,6 +116,7 @@ function createTOCElements(elementId: string, toc: Item[]) {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    transition: var(--text-transition-attribute);
 }
 
 #article-toc .l2 {
