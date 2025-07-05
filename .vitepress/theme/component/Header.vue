@@ -57,7 +57,7 @@ onMounted(() => {
         </div>
 
         <div class="right">
-            <button :onclick="toggleTheme">切换主题</button>
+            <button @click="toggleTheme">切换主题</button>
             <a href="https://github.com/LYGreen/make-blog" target="_blank">Github</a>
 
         </div>
