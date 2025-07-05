@@ -117,6 +117,11 @@ onMounted(() => {
     transition: var(--transition-attribute);
 }
 
+.title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
 .description {
     flex: 1;
 }
