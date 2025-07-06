@@ -12,6 +12,7 @@ import Article from './component/Article.vue';
 import ArticleTOC from './component/ArticleTOC.vue';
 import Articles from './component/Articles.vue';
 import Page404 from './component/Page404.vue';
+import Footer from './component/Footer.vue';
 
 const { site, page, frontmatter } = useData()
 
@@ -33,6 +34,7 @@ const { site, page, frontmatter } = useData()
         <Article />
         <ArticleTOC />
     </div>
+    <Footer />
 </template>
 
 <style scoped>
