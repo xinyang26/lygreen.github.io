@@ -12,7 +12,7 @@ onMounted(() => {
 
 function loadDiscussion() {
     // script src="https://giscus.app/client.js"
-    //     data-repo="LYGreen/make-blog"
+    //     data-repo="LYGreen/lygreen.github.io"
     //     data-repo-id="R_kgDOO_l9dQ"
     //     data-category="Article discussions"
     //     data-category-id="DIC_kwDOO_l9dc4Cr1qV"
@@ -25,13 +25,13 @@ function loadDiscussion() {
     //     data-lang="zh-CN"
     //     crossorigin="anonymous"
     //     async>
-    // script>
+    // /script>
 
     const theme = document.documentElement.getAttribute('data-theme') ?? 'light';
     const comments = document.getElementById('comments');
     const script = document.createElement('script');
     script.src = "https://giscus.app/client.js";
-    script.setAttribute('data-repo', "LYGreen/make-blog");;
+    script.setAttribute('data-repo', "LYGreen/lygreen.github.io");
     script.setAttribute('data-repo-id', "R_kgDOO_l9dQ");
     script.setAttribute('data-category', "Article discussions");
     script.setAttribute('data-category-id', "DIC_kwDOO_l9dc4Cr1qV");
