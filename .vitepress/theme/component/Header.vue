@@ -48,7 +48,7 @@ onMounted(() => {
 
         <div class="right">
             <button @click="toggleTheme">切换主题</button>
-            <a class="block github" href="https://github.com/LYGreen/make-blog" target="_blank">Github</a>
+            <a class="block github" href="https://github.com/LYGreen/lygreen.github.io" target="_blank">Github</a>
 
         </div>
     </div>
