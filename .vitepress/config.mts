@@ -17,7 +17,7 @@ export default defineConfigWithTheme<ThemeConfig>({
       dark: 'github-dark',
     }
   },
-  base: "/make-blog/",
+  // base: "/make-blog/",
   head: [
     [
       'script',
