@@ -1,4 +1,9 @@
 
+code {
+    background-color: var(--main-bg-color);
+    transition: var(--transition-attribute);
+}
+
 .vp-adaptive-theme {
     position: relative;
 
@@ -10,6 +15,7 @@
 
 .vp-code {
     overflow-x: auto;
+    
 }
 
 .copy {
@@ -34,10 +40,25 @@
     content: "复制成功";
 }
 
-:root .line span{
+.line span{
     color: var(--shiki-light);
 }
 
-:root[data-theme='dark'] .line span {
+[data-theme='dark'] .line span {
     color: var(--shiki-dark);
+}
+
+img {
+    max-width: 100%;
+}
+
+ul li a, p a {
+    display: inline-block;
+    text-decoration: underline;
+    transition: transform 0.3s ease, var(--text-transition-attribute);
+}
+
+ul li a:hover, p a:hover {
+    transform: translateY(-2px);
+    color: gray;
 }

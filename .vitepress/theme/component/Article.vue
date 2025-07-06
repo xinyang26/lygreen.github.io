@@ -97,24 +97,24 @@ function loadDiscussion() {
     box-shadow: var(--float-component-shadow);
 }
 
-#article .header .title {
+.header .title {
     display: flex;
     justify-content: center;
     font-size: 48px;
 }
 
-#article .header .description {
+.header .description {
     display: flex;
     justify-content: center;
     font-size: 24px;
 }
 
-#article .time {
+.time {
     font-size: 14px;
     color: grey;
 }
 
-#article .header, .footer, span {
+.header, .footer, span {
     display: block;
 }
 
