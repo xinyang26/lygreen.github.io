@@ -18,7 +18,7 @@ onMounted(() => {
     </div>
 </template>
 
-<style>
+<style scoped>
 
 #footer {
     text-align: center;
