@@ -114,7 +114,11 @@ onMounted(() => {
     border-radius: 8px;
     background-color: var(--secondary-bg-color);
     box-shadow: var(--float-component-shadow);
-    transition: var(--transition-attribute);
+    transition: transform 0.3s ease, var(--transition-attribute, background-color 0s);
+}
+
+.item:hover {
+    transform: translateY(-2px);
 }
 
 .title {
