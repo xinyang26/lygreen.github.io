@@ -2,18 +2,18 @@
 title: 各类编程语言编写 Hello World 教程
 description: 编写各类编程语言的 Hello World
 createdTime: '2025/7/5 12:55:23'
-updatedTime: '2025/7/5 13:18:36'
+updatedTime: '2025/7/6 12:11:48'
 readingTime: 2
 category:
   - 编程语言
 tag:
   - C
   - C 语言
-hash: c1a466c1d931f84c9867765fbf49b8ff2a0403a70a9597ae2d0b5814cd053edd
+hash: 0dce235767593aa2f12a29a7bcdf773d5817e868815d232f4a6896b621e27bab
 ---
 
 ## Hello World
-代码由 ChatGPT 编写
+代码由 ```ChatGPT``` 编写
 
 ### 脚本语言
 #### Python
