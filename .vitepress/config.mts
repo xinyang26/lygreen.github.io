@@ -9,7 +9,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   description: "A VitePress Site",
   cleanUrls: true,
   sitemap: {
-    hostname: "https://lygreen.github.io/make-blog/",
+    hostname: "https://lygreen.github.io/",
   },
   markdown: {
     theme: {
