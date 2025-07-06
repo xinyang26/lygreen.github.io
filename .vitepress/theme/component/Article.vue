@@ -13,9 +13,9 @@ onMounted(() => {
 function loadDiscussion() {
     // script src="https://giscus.app/client.js"
     //     data-repo="LYGreen/lygreen.github.io"
-    //     data-repo-id="R_kgDOO_l9dQ"
+    //     data-repo-id="R_kgDOPH1RXg"
     //     data-category="Article discussions"
-    //     data-category-id="DIC_kwDOO_l9dc4Cr1qV"
+    //     data-category-id="DIC_kwDOPH1RXs4CsjU0"
     //     data-mapping="pathname"
     //     data-strict="0"
     //     data-reactions-enabled="1"
@@ -32,9 +32,9 @@ function loadDiscussion() {
     const script = document.createElement('script');
     script.src = "https://giscus.app/client.js";
     script.setAttribute('data-repo', "LYGreen/lygreen.github.io");
-    script.setAttribute('data-repo-id', "R_kgDOO_l9dQ");
+    script.setAttribute('data-repo-id', "R_kgDOPH1RXg");
     script.setAttribute('data-category', "Article discussions");
-    script.setAttribute('data-category-id', "DIC_kwDOO_l9dc4Cr1qV");
+    script.setAttribute('data-category-id', "DIC_kwDOPH1RXs4CsjU0");
     script.setAttribute('data-mapping', "pathname");
     script.setAttribute('data-strict', "0");
     script.setAttribute('data-reactions-enabled', "1");
