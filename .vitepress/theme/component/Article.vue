@@ -86,8 +86,8 @@ function loadDiscussion() {
 <style scoped>
 
 #article {
-    width: 100%;
     margin-top: 16px;
+    width: 100%;
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 16px;
@@ -117,9 +117,5 @@ function loadDiscussion() {
 #article .header, .footer, span {
     display: block;
 }
-
-
-
-
 
 </style>

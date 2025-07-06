@@ -67,6 +67,12 @@ onMounted(() => {
     top: 0px;
     width: 100%;
     height: 50px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    
+    display: flex;
+    justify-content: space-between;
 }
 
 .block {
@@ -106,7 +112,6 @@ button:active {
 }
 
 .left {
-    float: left;
     display: flex;
     flex-direction: row;
     gap: 16px;
@@ -116,13 +121,14 @@ button:active {
 }
 
 .right {
-    float: right;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 16px;
     padding-right: 16px;
     height: 100%;
+
+    
 }
 
 </style>

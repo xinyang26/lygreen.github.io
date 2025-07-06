@@ -41,9 +41,10 @@ const { site, page, frontmatter } = useData()
 
 #h-container {
     display: flex;
+    width: calc(100% - 40px);
     gap: 16px;
     flex-direction: row;
-    min-height: calc(100vh - 50px);
+    min-height: calc(100% - 50px);
     padding-left: 20px;
     padding-right: 20px;
 }
