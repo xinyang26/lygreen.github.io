@@ -5,7 +5,8 @@ import ThemeConfig from './theme/themeConfig'
 export default defineConfigWithTheme<ThemeConfig>({
   srcDir: "./src",
   outDir: "./out",
-  title: "LYGreen 的博客",
+  title: "💝 LYGreen 的博客 💖",
+  // titleTemplate: '',
   description: "个人博客",
   cleanUrls: true,
   lastUpdated: true,
@@ -33,6 +34,15 @@ export default defineConfigWithTheme<ThemeConfig>({
   },
   // base: "/make-blog/",
   head: [
+    // [
+    //   'link',
+    //   {
+    //     rel: 'icon',
+    //     href: '/favicon.ico',
+    //     type: 'image/x-icon',
+    //   },
+    //   '',
+    // ],
     [
       'script',
       {},
