@@ -5,11 +5,25 @@ import ThemeConfig from './theme/themeConfig'
 export default defineConfigWithTheme<ThemeConfig>({
   srcDir: "./src",
   outDir: "./out",
-  title: "自建博客",
-  description: "A VitePress Site",
+  title: "LYGreen 的博客",
+  description: "个人博客",
   cleanUrls: true,
+  lastUpdated: true,
   sitemap: {
     hostname: "https://lygreen.github.io/",
+    lastmodDateOnly: true,
+    xmlns: {
+      news: false,
+      video: false,
+      xhtml: false,
+      image: false,
+    },
+    transformItems: (items) => {
+      items = items.filter((item) => {
+        return item.url.startsWith("posts/") || item.url == '';
+      })
+      return items;
+    },
   },
   markdown: {
     theme: {
