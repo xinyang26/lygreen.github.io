@@ -52,11 +52,6 @@ function spanAdd() {
 
 <style scoped>
 
-#home {
-    width: 100%;
-    height: calc(100vh - 50px - 60px);
-}
-
 span {
     position: absolute;
     top: 50%;

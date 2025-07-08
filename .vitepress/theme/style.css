@@ -23,6 +23,9 @@
   /* 一开始就能让字体颜色有渐变效果，不需要等按了切换主题才有这个效果 */
   --text-transition-attribute: color 0.3s ease;
   --background-transition-attribute: background-color 0.3s ease;
+
+  /* 其他变量 */
+  /* --header-height: 50px; */
 }
 
 :root[data-theme='dark'] {

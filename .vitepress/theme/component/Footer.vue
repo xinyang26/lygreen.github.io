@@ -21,8 +21,10 @@ onMounted(() => {
 <style scoped>
 
 #footer {
+    background-color: var(--main-bg-color);
+    box-shadow: var(--float-component-shadow);
+
     text-align: center;
-    bottom: 0px;
 }
 
 span {

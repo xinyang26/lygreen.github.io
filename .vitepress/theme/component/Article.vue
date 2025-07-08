@@ -93,6 +93,8 @@ function loadDiscussion() {
     padding-top: 16px;
     padding-bottom: 16px;
 
+    border-radius: 8px;
+
     background-color: var(--secondary-bg-color);
     box-shadow: var(--float-component-shadow);
 }

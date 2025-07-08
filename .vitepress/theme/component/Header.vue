@@ -61,11 +61,8 @@ onMounted(() => {
     background-color: var(--main-bg-color);
     box-shadow: var(--float-component-shadow);
 
-    z-index: 999;
-    position: sticky;
-
-    top: 0px;
     width: 100%;
+    /* height: var(--header-height); */
     height: 50px;
     overflow-x: auto;
     overflow-y: hidden;

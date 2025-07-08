@@ -3,7 +3,7 @@
 const base = import.meta.env.BASE_URL;
 
 import { useData } from 'vitepress';
-import { onMounted } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 const { params } = useData();
 const posts = params.value.posts;
 const currentPage = params.value.page;
@@ -75,10 +75,9 @@ onMounted(() => {
 <style scoped>
 
 #articles {
-    margin-left: 32px;
-    margin-right: 32px;
+    padding-left: 32px;
+    padding-right: 32px;
 }
-
 
 .pages {
     display: flex;
