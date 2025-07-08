@@ -1,13 +1,17 @@
 <script setup>
 
+import { useData } from 'vitepress';
+
 const base = import.meta.env.BASE_URL;
 
-import { useData } from 'vitepress';
-import { onMounted, reactive, ref } from 'vue';
 const { params } = useData();
 const posts = params.value.posts;
 const currentPage = params.value.page;
 const totalPage = params.value.totalPage;
+
+</script>
+
+<script client>
 
 const COLOR_COUNT = 6;
 const colors = [];
@@ -19,7 +23,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-onMounted(() => {
+(() => {
     const categories = document.querySelectorAll('.category a');
     const tags = document.querySelectorAll('.tag a');
     for (let i = 0; i < categories.length; i++) {
@@ -28,7 +32,7 @@ onMounted(() => {
     for (let i = 0; i < tags.length; i++) {
         tags[i].classList.add(colors[getRandomInt(0, colors.length)]);
     }
-});
+})();
 
 </script>
 
@@ -53,17 +57,17 @@ onMounted(() => {
             </div>
         </div>
         <div class="pages">
-            <a :href="currentPage != 1 ? base + 'articles/pages/' + (currentPage - 1) : ''" target="_self">
+            <a :href="currentPage != 1 ? base + 'articles/pages/' + (currentPage - 1) : ''">
                 <div class="page-block">
                     <
                 </div>
             </a>
-            <a :href="base + 'articles/pages/' + item" target="_self" v-for="(item, index) in totalPage" v-bind:key="index">
+            <a :href="base + 'articles/pages/' + item" v-for="(item, index) in totalPage" v-bind:key="index">
                 <div :class="{ 'active': currentPage == item, 'page-block': true }">
                     {{ item }}
                 </div>
             </a>
-            <a :href="currentPage != totalPage ? base + 'articles/pages/' + (currentPage + 1) : ''" target="_self">
+            <a :href="currentPage != totalPage ? base + 'articles/pages/' + (currentPage + 1) : ''">
                 <div class="page-block">
                     >
                 </div>

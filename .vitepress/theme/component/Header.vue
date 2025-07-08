@@ -1,11 +1,25 @@
 <script setup lang="ts">
 
-import { onMounted } from 'vue';
-
 const base = (import.meta as any).env.BASE_URL
 
+</script>
+
+<script client>
+
 let hasEvent = false;
-let media: MediaQueryList;
+let media;
+
+console.log("aaa");
+
+function onMediaChanged(e) {
+    document.documentElement.setAttribute('data-transition', '');
+    if (e.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+    localStorage.removeItem('data-theme');
+}
 
 function toggleTheme() {
     if (hasEvent) {
@@ -19,21 +33,14 @@ function toggleTheme() {
     localStorage.setItem('data-theme', theme);
 }
 
-function onMediaChanged(e: MediaQueryListEvent) {
-    document.documentElement.setAttribute('data-transition', '');
-    if (e.matches) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-    }
-    localStorage.removeItem('data-theme');
-}
-
-onMounted(() => {
+(() => {
     media = window.matchMedia('(prefers-color-scheme: dark)');
     media.addEventListener('change', onMediaChanged);
     hasEvent = true;
-});
+    const btn = document.getElementById('btn-toggle-theme');
+    btn?.addEventListener('click', toggleTheme);
+})();
+
 
 </script>
 
@@ -41,15 +48,14 @@ onMounted(() => {
     <div id="header">
         <div class="left">
             <a class="block home" :href="base" target="_self">首页</a>
-            <a class="block article" :href="base + 'articles/pages/1'" target="_self">文章</a>
-            <a class="block category" :href="base + 'category/'" target="_self">分类</a>
-            <a class="block tag" :href="base + 'tag/'" target="_self">标签</a>
+            <a class="block article" :href="base + 'articles/pages/1'">文章</a>
+            <a class="block category" :href="base + 'category/'">分类</a>
+            <a class="block tag" :href="base + 'tag/'">标签</a>
         </div>
 
         <div class="right">
-            <button @click="toggleTheme">切换主题</button>
+            <button id="btn-toggle-theme">切换主题</button>
             <a class="block github" href="https://github.com/LYGreen/lygreen.github.io" target="_blank">Github</a>
-
         </div>
     </div>
 

@@ -1,16 +1,13 @@
 <script setup lang="ts">
 
-import { onMounted } from 'vue';
 import { useData } from 'vitepress';
-import theme from 'vitepress/theme';
 
 const base = (import.meta as any).env.BASE_URL;
 const { frontmatter } = useData();
 
-onMounted(() => {
-    loadDiscussion();
-    listenTheme();
-});
+</script>
+
+<script client>
 
 function loadDiscussion() {
     // script src="https://giscus.app/client.js"
@@ -72,11 +69,15 @@ function sendMessage(message) {
     if (!iframe) {
         return;
     }
-    console.log(iframe.contentWindow);
     iframe.contentWindow?.postMessage({
         giscus: message,
     }, 'https://giscus.app');
 }
+
+(() => {
+    loadDiscussion();
+    listenTheme();
+})();
 
 </script>
 

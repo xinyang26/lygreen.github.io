@@ -1,20 +1,13 @@
-<script setup>
+<script setup lang="ts">
 
-import { onMounted } from 'vue';
+
+</script>
+
+<script client>
 
 const text = "Hello World !"
 let currentText = text;
 let span;
-let strong;
-
-onMounted(() => {
-    span = document.querySelector("#home > span");
-    strong = document.querySelector("#home > strong");
-
-    span.textContent = currentText;
-
-    startAnimation();
-});
 
 function startAnimation() {
     setTimeout(spanRemove, 200);
@@ -39,6 +32,14 @@ function spanAdd() {
         setTimeout(spanRemove, 3000);
     }
 }
+
+(() => {
+    span = document.querySelector("#home > span");
+
+    span.textContent = currentText;
+
+    startAnimation();
+})();
 
 </script>
 

@@ -7,8 +7,9 @@
 
     "docs:dev": "npm run update-all && vitepress dev",
     "docs:build": "npm run update-all && vitepress build",
-    "docs:preview": "npm run update-all && vitepress preview",
-    "docs:dev-host": "npm run update-all && vitepress dev --host"
+    "docs:preview": "vitepress preview",
+    "docs:dev-host": "npm run update-all && vitepress dev --host",
+    "docs:build-host": "npm run docs:build && npm run docs:preview"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

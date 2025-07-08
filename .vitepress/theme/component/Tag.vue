@@ -1,12 +1,15 @@
 <script setup>
 
 import { useData } from 'vitepress';
-import { onMounted } from 'vue';
 
 const { params } = useData();
 
 const base = import.meta.env.BASE_URL;
 const tags = params.value?.tags;
+
+</script>
+
+<script client>
 
 const COLOR_COUNT = 6;
 const colors = [];
@@ -18,12 +21,12 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-onMounted(() => {
+(() => {
     const categories = document.querySelectorAll('#tag a');
     for (let i = 0; i < categories.length; i++) {
         categories[i].classList.add(colors[getRandomInt(0, colors.length)]);
     }
-});
+})();
 
 </script>
 

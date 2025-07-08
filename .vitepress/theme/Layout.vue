@@ -17,7 +17,6 @@ import Page404 from './component/Page404.vue';
 
 const { site, page, frontmatter } = useData()
 
-
 </script>
 
 <template>

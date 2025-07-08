@@ -3,9 +3,21 @@
 import { ref, onMounted } from 'vue';
 
 const year = ref('');
+year.value = new Date(Date.now()).getFullYear();
 
-onMounted(() => {
-    year.value = new Date(Date.now()).getFullYear();
+</script>
+
+<script client>
+
+(() => {
+    const year = new Date(Date.now()).getFullYear();
+    const elements = document.querySelectorAll('#footer span my-var');
+
+    elements.forEach((e) => {
+        e.textContent = year;
+    });
+
+
 });
 
 </script>

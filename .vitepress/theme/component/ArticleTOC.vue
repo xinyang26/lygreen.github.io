@@ -1,28 +1,19 @@
 <script setup lang="ts">
 
-import { onMounted } from 'vue';
 
-interface Item {
-    level: number,
-    id: string,
-    text: string | null,
-    children: Item[],
-}
+</script>
 
-onMounted(() => {
-    const toc = buildTOC();
-    createTOCElements("article-toc", toc);
-});
+<script client>
 
-function buildTOC() : Item[] {
+function buildTOC() {
     const headings = document.querySelectorAll('#article > .body h2, h3, h4');
-    const toc: Item[] = [];
-    let lastH2 : Item | null = null;
-    let lastH3 : Item | null = null;
+    const toc = new Array();
+    let lastH2;
+    let lastH3;
 
     headings.forEach(h => {
         const level = parseInt(h.tagName[1]);
-        const item : Item = {
+        const item = {
             level: level,
             id: h.id,
             text: h.textContent,
@@ -44,14 +35,14 @@ function buildTOC() : Item[] {
     return toc;
 }
 
-function createTOCElements(elementId: string, toc: Item[]) {
+function createTOCElements(elementId, toc) {
     const container = document.getElementById(elementId);
     const dataVid = container?.getAttributeNames().filter((name) => {
         return name.startsWith('data-v-');
     })[0] ?? '';
 
     for (let i = 0; i < toc.length; i++) {
-        const l2Children: Item[] = toc[i].children ?? [];
+        const l2Children = toc[i].children ?? [];
         const l2Ele = document.createElement("a");
         const number1 = (i + 1) + '. ';
         l2Ele.setAttribute(dataVid, '');
@@ -61,7 +52,7 @@ function createTOCElements(elementId: string, toc: Item[]) {
         container?.appendChild(l2Ele);
 
         for (let j = 0; j < l2Children.length; j++) {
-            const l3Chidren: Item[] = l2Children[j].children ?? [];
+            const l3Chidren = l2Children[j].children ?? [];
             const l3Ele = document.createElement("a");
             const number2 = (i + 1) + '.' + (j + 1) + '. ';
             l3Ele.setAttribute(dataVid, '');
@@ -84,6 +75,11 @@ function createTOCElements(elementId: string, toc: Item[]) {
         }
     }
 }
+
+(() => {
+    const toc = buildTOC();
+    createTOCElements("article-toc", toc);
+})();
 
 </script>
 

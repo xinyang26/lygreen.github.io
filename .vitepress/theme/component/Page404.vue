@@ -3,8 +3,7 @@
 </script>
 
 <template>
-    <div>
-
+    <div id="page-404">
         404 Not Found.
     </div>
 

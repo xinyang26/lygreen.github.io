@@ -1,8 +1,23 @@
-import { defineConfig, defineConfigWithTheme } from 'vitepress'
+import { defineConfig, defineConfigWithTheme, HeadConfig } from 'vitepress'
 import ThemeConfig from './theme/themeConfig'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfigWithTheme<ThemeConfig>({
+  mpa: true,
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            // 示例：将一些共享模块拆分
+            if (id.includes('node_modules')) {
+              return 'vendor';
+            }
+          }
+        }
+      }
+    }
+  },
   srcDir: "./src",
   outDir: "./out",
   title: "💝 LYGreen 的博客 💖",
@@ -32,7 +47,22 @@ export default defineConfigWithTheme<ThemeConfig>({
       dark: 'github-dark',
     }
   },
-  // base: "/make-blog/",
+  transformHead(context) {
+    const meta: HeadConfig = [
+      'meta',
+      {
+        name: 'robots',
+        content: '',
+      },
+      ''
+    ]
+    if (context.page === 'index.md' || context.page.startsWith('posts/')) {
+      (meta[1] as any).content = 'index, nofollow';
+    } else {
+      (meta[1] as any).content = 'noindex, nofollow';
+    }
+    return [meta];
+  },
   head: [
     // [
     //   'link',

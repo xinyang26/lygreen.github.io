@@ -8,6 +8,10 @@ const { params } = useData();
 const base = import.meta.env.BASE_URL;
 const categories = params.value?.categories;
 
+</script>
+
+<script client>
+
 const COLOR_COUNT = 6;
 const colors = [];
 for (let i = 0; i < COLOR_COUNT; i++) {
@@ -18,13 +22,12 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-onMounted(() => {
+(() => {
     const categories = document.querySelectorAll('#category a');
     for (let i = 0; i < categories.length; i++) {
         categories[i].classList.add(colors[getRandomInt(0, colors.length)]);
     }
-});
-
+})();
 
 </script>
 
