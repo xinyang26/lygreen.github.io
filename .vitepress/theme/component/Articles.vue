@@ -51,12 +51,12 @@ function getRandomInt(min, max) {
             </a>
             <div class="bottom">
                 <div class="category">
-                    <a :href="'#'" v-for="(e, i) in item.category" v-bind:key="i">
+                    <a :href="base + 'category/' + e" v-for="(e, i) in item.category" v-bind:key="i">
                         {{ e }}
                     </a>
                 </div>
                 <div class="tag">
-                    <a :href="'#'" v-for="(e, i) in item.tag" v-bind:key="i">
+                    <a :href="base + 'tag/' + e" v-for="(e, i) in item.tag" v-bind:key="i">
                         {{ e }}
                     </a>
                 </div>
