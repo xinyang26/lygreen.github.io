@@ -1,7 +1,4 @@
-<script setup lang="ts">
 
-
-</script>
 
 <script client>
 
@@ -89,11 +86,11 @@ function createTOCElements(elementId, toc) {
 
 <template>
     <div id="article-toc">
-        
+
     </div>
 </template>
 
-<style scoped>
+<style>
 
 #article-toc {
     position: sticky;
@@ -120,27 +117,27 @@ function createTOCElements(elementId, toc) {
     }
 }
 
-a {
+#article-toc a {
     display: flex;
     flex-direction: column;
     gap: 8px;
     transition: var(--text-transition-attribute);
 }
 
-.l2 {
+#article-toc a:hover {
+    color: var(--secondary-text-color);
+}
+
+#article-toc .l2 {
     padding-left: 16px;
 }
 
-.l3 {
+#article-toc .l3 {
     padding-left: 32px;
 }
 
-.l4 {
+#article-toc .l4 {
     padding-left: 48px;
-}
-
-a:hover {
-    color: var(--secondary-text-color);
 }
 
 #article-toc::-webkit-scrollbar {
