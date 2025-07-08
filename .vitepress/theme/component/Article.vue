@@ -4,10 +4,12 @@ import { onMounted } from 'vue';
 import { useData } from 'vitepress';
 import theme from 'vitepress/theme';
 
+const base = (import.meta as any).env.BASE_URL;
 const { frontmatter } = useData();
 
 onMounted(() => {
     loadDiscussion();
+    listenTheme();
 });
 
 function loadDiscussion() {
@@ -45,6 +47,35 @@ function loadDiscussion() {
     script.crossOrigin = 'anonymous';
     script.async = true;
     comments?.appendChild(script);
+}
+
+function listenTheme() {
+    const element = document.documentElement;
+    const observer = new MutationObserver((mutations) => {
+        for (const m of mutations) {
+            if (m.type === 'attributes' && m.attributeName === 'data-theme') {
+                sendMessage({
+                    setConfig: {
+                        theme: element.getAttribute(m.attributeName),
+                    }
+                });
+            }
+        }
+    });
+    observer.observe(element, {
+        attributes: true,
+    });
+}
+
+function sendMessage(message) {
+    const iframe = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
+    if (!iframe) {
+        return;
+    }
+    console.log(iframe.contentWindow);
+    iframe.contentWindow?.postMessage({
+        giscus: message,
+    }, 'https://giscus.app');
 }
 
 </script>
