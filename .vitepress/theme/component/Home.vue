@@ -34,10 +34,11 @@ function spanAdd() {
 }
 
 (() => {
+    if (document.getElementById('home') == null) {
+        return;
+    }
     span = document.querySelector("#home > span");
-
     span.textContent = currentText;
-
     startAnimation();
 })();
 

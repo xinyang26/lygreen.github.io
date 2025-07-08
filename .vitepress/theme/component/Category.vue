@@ -12,17 +12,23 @@ const categories = params.value?.categories;
 
 <script client>
 
-const COLOR_COUNT = 6;
-const colors = [];
-for (let i = 0; i < COLOR_COUNT; i++) {
-    colors.push('color' + i);
-}
+
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
 (() => {
+    if (document.getElementById('category') == null) {
+        return;
+    }
+
+    const COLOR_COUNT = 6;
+    const colors = [];
+    for (let i = 0; i < COLOR_COUNT; i++) {
+        colors.push('color' + i);
+    }
+
     const categories = document.querySelectorAll('#category a');
     for (let i = 0; i < categories.length; i++) {
         categories[i].classList.add(colors[getRandomInt(0, colors.length)]);

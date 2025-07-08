@@ -8,6 +8,16 @@ const posts = useData().params.value.posts;
 
 </script>
 
+<script client>
+
+(() => {
+    if (document.getElementById('category-page') == null) {
+        return;
+    }
+})();
+
+</script>
+
 <template>
     <div id="category-page">
         <div class="header">

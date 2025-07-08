@@ -77,6 +77,10 @@ function createTOCElements(elementId, toc) {
 }
 
 (() => {
+    if (document.getElementById('article-toc') == null) {
+        return;
+    }
+
     const toc = buildTOC();
     createTOCElements("article-toc", toc);
 })();

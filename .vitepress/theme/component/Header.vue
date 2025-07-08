@@ -34,6 +34,10 @@ function toggleTheme() {
 }
 
 (() => {
+    if (document.getElementById('header') == null) {
+        return;
+    }
+
     media = window.matchMedia('(prefers-color-scheme: dark)');
     media.addEventListener('change', onMediaChanged);
     hasEvent = true;

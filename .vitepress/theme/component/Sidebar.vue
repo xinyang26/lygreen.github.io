@@ -3,6 +3,16 @@
 
 </script>
 
+<script client>
+
+(() => {
+    if (document.getElementById('sidebar') == null) {
+        return;
+    }
+})();
+
+</script>
+
 <template>
     <div id="sidebar">
     

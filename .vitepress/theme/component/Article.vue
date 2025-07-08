@@ -75,6 +75,9 @@ function sendMessage(message) {
 }
 
 (() => {
+    if (document.getElementById('article') == null) {
+        return;
+    }
     loadDiscussion();
     listenTheme();
 })();

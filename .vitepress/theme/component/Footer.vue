@@ -10,6 +10,10 @@ year.value = new Date(Date.now()).getFullYear();
 <script client>
 
 (() => {
+    if (document.getElementById('footer') == null) {
+        return;
+    }
+
     const year = new Date(Date.now()).getFullYear();
     const elements = document.querySelectorAll('#footer span my-var');
 

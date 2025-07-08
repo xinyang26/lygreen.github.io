@@ -8,6 +8,16 @@ const posts = useData().params.value.posts;
 
 </script>
 
+<script client>
+
+(() => {
+    if (document.getElementById('tag-page') == null) {
+        return;
+    }
+})();
+
+</script>
+
 <template>
     <div id="tag-page">
         <div class="header">
