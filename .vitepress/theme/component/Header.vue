@@ -40,10 +40,10 @@ onMounted(() => {
 <template>
     <div id="header">
         <div class="left">
-            <a class="block home" :href="base" target="_self">首页</a>
-            <a class="block article" :href="base + 'articles/pages/1'" target="_self">文章</a>
-            <a class="block category" :href="base + 'category/'" target="_self">分类</a>
-            <a class="block tag" :href="base + 'tag/'" target="_self">标签</a>
+            <a class="block home" :href="base">首页</a>
+            <a class="block article" :href="base + 'articles/pages/1'">文章</a>
+            <a class="block category" :href="base + 'category/'">分类</a>
+            <a class="block tag" :href="base + 'tag/'">标签</a>
         </div>
 
         <div class="right">
