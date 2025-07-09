@@ -3,3 +3,4 @@ out
 *-demo.md
 *.bat
 .vitepress/cache
+*.json

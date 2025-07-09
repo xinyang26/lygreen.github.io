@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path';
 
-const srcDir = './src';
-const postsDir = './posts';
+import { POSTS_DIR } from './execConfig.mjs';
+
 const name = process.argv[2];
 
 if (name == undefined) {
@@ -27,4 +27,4 @@ hash: ''
 ---\
 `;
 
-fs.writeFileSync(path.join(srcDir, postsDir, name + '.md'), markdown);
+fs.writeFileSync(path.join(POSTS_DIR, name + '.md'), markdown);

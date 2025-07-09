@@ -3,8 +3,7 @@ import path from 'path';
 import crypto from 'crypto';
 import matter from 'gray-matter';
 
-const srcDir = './src';
-const postsDir = './posts';
+import { POSTS_DIR } from './execConfig.mjs';
 
 function getReadingTime(text) {
     const cnCharCount = (text?.match(/[\u4e00-\u9fa5]/g) || []).length;
@@ -17,12 +16,12 @@ function getReadingTime(text) {
     return time;
 }
 
-async function main() {
-    const files = await fs.readdir(path.join(srcDir, postsDir));
+(async () => {
+    const files = await fs.readdir(POSTS_DIR);
 
     await Promise.all(
         files.map(async f => {
-            const fullpath = path.join(srcDir, postsDir, f);
+            const fullpath = path.join(POSTS_DIR, f);
             const data = await fs.readFile(fullpath, 'utf-8');
             const markdown = matter(data);
             const oldHash = markdown.data.hash;
@@ -37,6 +36,4 @@ async function main() {
 
         })
     );
-}
-
-main();
+})();
