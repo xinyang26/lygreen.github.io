@@ -62,3 +62,15 @@ ul li a:hover, p a:hover {
     transform: translateY(-2px);
     color: gray;
 }
+
+.toc-l2 {
+    padding-left: 16px;
+}
+
+.toc-l3 {
+    padding-left: 32px;
+}
+
+.toc-l4 {
+    padding-left: 48px;
+}
