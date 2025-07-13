@@ -1,17 +1,19 @@
 <script setup lang="ts">
 
-import { useData } from 'vitepress';
+import { useData, useRouter } from 'vitepress';
 import { onMounted, reactive, ref } from 'vue';
 import axios from 'axios';
+
+const base = (import.meta as any).env.BASE_URL;
+
+const { params } = useData();
+const router = useRouter();
 
 const COLOR_COUNT = 6;
 const colors: Array<any> = [];
 for (let i = 0; i < COLOR_COUNT; i++) {
     colors.push('color' + i);
 }
-const base = (import.meta as any).env.BASE_URL;
-
-const { params } = useData();
 
 interface PostsPageInfo {
     postsPerPage: number,
@@ -33,7 +35,7 @@ interface Post {
 
 /* 包括当前页面和前后两页页面（前后两页页面为预加载） */
 const posts = ref<Post[]>([]);
-let postsPageInfo = reactive<any>({});
+let postsPageInfo = reactive<PostsPageInfo>({ postsPerPage: 0, totalPages: 0, length: 0 });
 let currentPage = (params.value as any).page;
 
 onMounted(async () => {
@@ -41,7 +43,21 @@ onMounted(async () => {
     const response = await axios.get(url);
     postsPageInfo = response.data;
     setPage(currentPage);
-})
+});
+
+router.onAfterPageLoad = (to) => {
+    
+};
+
+router.onAfterRouteChange = (to) => {
+    const matchs = to.match(/^\/articles\/pages\/(\d+)\/?$/);
+    if (matchs != null)
+    {
+        const page = matchs == null ? 0 : parseInt(matchs[1]);
+        setPage(page);
+    }
+}
+
 
 function lastPage() {
     if (currentPage > 1) {
@@ -66,28 +82,6 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-
-/* 客户端 */
-// const COLOR_COUNT = 6;
-// const colors: Array<any> = [];
-// for (let i = 0; i < COLOR_COUNT; i++) {
-//     colors.push('color' + i);
-// }
-
-// function getRandomInt(min, max) {
-//     return Math.floor(Math.random() * (max - min) + min);
-// }
-
-// onMounted(() => {
-//     const categories = document.querySelectorAll('.category a');
-//     const tags = document.querySelectorAll('.tag a');
-//     for (let i = 0; i < categories.length; i++) {
-//         categories[i].classList.add(colors[getRandomInt(0, colors.length)]);
-//     }
-//     for (let i = 0; i < tags.length; i++) {
-//         tags[i].classList.add(colors[getRandomInt(0, colors.length)]);
-//     }
-// });
 
 </script>
 
@@ -132,6 +126,8 @@ function getRandomInt(min, max) {
 </template>
 
 <style scoped>
+
+
 
 #articles {
     padding-left: 32px;
