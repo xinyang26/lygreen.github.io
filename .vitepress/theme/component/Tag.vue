@@ -51,8 +51,8 @@ onMounted(() => {
     box-shadow: var(--float-component-shadow);
     border-radius: 8px;
 
-    width: 200px;
-    height: 120px;
+    width: 160px;
+    height: 96px;
 }
 
 span {
