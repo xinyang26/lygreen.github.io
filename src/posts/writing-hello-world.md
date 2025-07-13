@@ -2,14 +2,14 @@
 title: 各类编程语言编写 Hello World 教程
 description: 编写各类编程语言的 Hello World
 createdTime: '2025/7/5 12:55:23'
-updatedTime: '2025/7/6 12:11:48'
+updatedTime: '2025/7/13 22:23:30'
 readingTime: 2
 category:
   - 编程语言
 tag:
   - C
   - C 语言
-hash: 0dce235767593aa2f12a29a7bcdf773d5817e868815d232f4a6896b621e27bab
+hash: bcab71c2b857dd7c5a1bacdf6bb4ccd5d719cd8a9492571d05fc4ef975bdce76
 ---
 
 ## Hello World
