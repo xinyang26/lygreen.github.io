@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "generate-test-posts": "node exec/generate-test-posts.mjs",
     "new-post": "node exec/new-post.mjs",
     "update-posts": "node exec/update-posts.mjs",
     "mdinfo-to-json": "node exec/mdinfo-to-json.mjs",

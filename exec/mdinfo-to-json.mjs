@@ -21,6 +21,13 @@ const POSTS_PER_PAGE = 3;
  */
 
 /**
+ * @typedef {Object} PostsPageInfo
+ * @property {number} postsPerPage
+ * @property {number} totalPages
+ * @property {number} length
+ */
+
+/**
  * 
  * @param {Post[]} posts 
  */
@@ -48,7 +55,21 @@ async function clearFiles(dir) {
     );
 }
 
+/**
+ * 
+ * @param {string} path 
+ */
+async function createFolder(path) {
+    try {
+        await fs.access(path);
+    } catch(e) {
+        await fs.mkdir(path);
+    }
+}
+
 (async () => {
+    await createFolder(JSON_DIR);
+
     await clearFiles(JSON_DIR);
 
     const files = await fs.readdir(POSTS_DIR);
@@ -80,11 +101,13 @@ async function clearFiles(dir) {
     const remainder = posts.length % POSTS_PER_PAGE;
     const total = quotient + (remainder == 0 ? 0 : 1);
 
+    /** @type {PostsPageInfo} */
     const postsPageInfo = {
         postsPerPage: POSTS_PER_PAGE,
         totalPages: total,
         length: posts.length,
     }
+    
     await fs.writeFile(
         path.join(JSON_DIR, './posts-page-info.json'),
         JSON.stringify(postsPageInfo, null, 2)
