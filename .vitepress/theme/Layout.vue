@@ -4,16 +4,15 @@ import { useData } from 'vitepress'
 import AppHeader from './component/Header.vue'
 import AppFooter from './component/Footer.vue';
 
-import Home from './component/Home.vue';
-import Sidebar from './component/Sidebar.vue';
-import Category from './component/Category.vue';
-import CategoryPage from './component/CategoryPage.vue';
-import Tag from './component/Tag.vue';
-import TagPage from './component/TagPage.vue';
-import AppArticle from './component/Article.vue';
-import ArticleTOC from './component/ArticleTOC.vue';
-import Articles from './component/Articles.vue';
-import Page404 from './component/Page404.vue';
+import Home from './views/Home.vue';
+import Category from './views/Category.vue';
+import CategoryPage from './views/CategoryPage.vue';
+import Tag from './views/Tag.vue';
+import TagPage from './views/TagPage.vue';
+import AppArticle from './views/Article.vue';
+import ArticleTOC from './views/ArticleTOC.vue';
+import Articles from './views/Articles.vue';
+import Page404 from './views/Page404.vue';
 
 const { site, page, frontmatter } = useData()
 

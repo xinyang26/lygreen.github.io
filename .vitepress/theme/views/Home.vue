@@ -2,6 +2,7 @@
 
 import { useData, useRoute, useRouter } from 'vitepress';
 import { onMounted, reactive, ref } from 'vue';
+import Profile from '../component/Profile.vue';
 import axios from 'axios';
 
 interface Post {
@@ -22,43 +23,34 @@ interface PostsPageInfo {
     length: number,
 }
 
-interface User {
-    avatarUrl: string,
-    bio: string,
-}
-
 const base = (import.meta as any).env.BASE_URL;
 const data = useData();
-const route = useRoute();
 const router = useRouter();
 
-let _postsPageInfo: PostsPageInfo;
-let _posts: Post[];
-let _user: any;
+let _postsPageInfo: PostsPageInfo = {} as PostsPageInfo;
+let _posts: Post[] = [];
 
 const posts = ref<Post[]>([]);
 const currentPage = ref<number>(1);
-const user = ref<User>({} as User);
 const pagination = ref<Array<any>>([]);
     
-router.onAfterRouteChange = (async (to) => {
-    getCurrentPageNumber();
+async function setPage(page: number) {
+    currentPage.value = page;
     await Promise.all([
         requestPosts()
     ]);
     loadPosts();
     loadPagination();
-});
+};
 
 onMounted(async () => {
     getCurrentPageNumber();
     await Promise.all([
-        requestUserInfo(),
+        
         requestPageInfo(),
         requestPosts(),
     ]);
 
-    loadUserInfo();
     loadPosts();
     loadPagination();
 });
@@ -129,17 +121,6 @@ async function requestPosts() {
     })
 }
 
-async function requestUserInfo() {
-    await axios.get("https://api.github.com/users/LYGreen").then((response) => {
-        _user = response.data;
-    });
-}
-
-function loadUserInfo() {
-    user.value.avatarUrl = _user.avatar_url ?? "";
-    user.value.bio = _user.bio ?? "";
-}
-
 function loadPosts() {
     posts.value = _posts;
 }
@@ -152,15 +133,7 @@ function loadPagination() {
 
 <template>
     <div id="home">
-        <div class="profile">
-            <div class="avatar">
-                <a href="#">
-                    <img :src="user.avatarUrl" alt="">
-                </a>
-                <span class="emoji">🍥</span>
-            </div>
-            <span>{{ user.bio }}</span>
-        </div>
+        <Profile />
         <div class="articles">
             <div class="item" v-for="(item, index) in posts" v-bind:key="index">
                 <a class="item-header" :href="base + item.url">
@@ -169,20 +142,20 @@ function loadPagination() {
                 </a>
                 <a class="item-footer">
                     <div class="category">
-                        <a :href="base + 'category/'" v-for="(i, idx) in item.category" v-bind:key="idx">
+                        <a :href="base + 'category/' + i" v-for="(i, idx) in item.category" v-bind:key="idx">
                             {{ i }}
                         </a>
                     </div>
                     <div class="tag">
-                        <a :href="base + 'tag/'" v-for="(i, idx) in item.tag" v-bind:key="idx">
+                        <a :href="base + 'tag/' + i" v-for="(i, idx) in item.tag" v-bind:key="idx">
                             {{ i }}
                         </a>
                     </div>
                 </a>
             </div>
 
-            <div class="pages">
-                <a :href="item == 1 ? '/' : ('/page/' + item)" v-for="(item, index) in pagination" v-bind:key="index" :class="{ active: item == currentPage }">
+            <div class="pagination">
+                <a @click="item == '...' ? '' : setPage(Number.parseInt(item))" :href="item == 1 ? base : (item == '...' ? '' : base + 'page/' + item)" v-for="(item, index) in pagination" v-bind:key="index" :class="{ active: item == currentPage }">
                     {{ item }}
                 </a>
             </div>
@@ -195,8 +168,8 @@ function loadPagination() {
 
 #home {
     display: flex;
-    flex-direction: row;
     align-items: flex-start;
+    flex-direction: row;
     gap: 48px;
     padding-top: 48px;
     padding-left: 200px;
@@ -204,47 +177,13 @@ function loadPagination() {
     padding-bottom: 48px;
 }
 
-.profile {
-    position: sticky;
-    display: flex;
-    gap: 20px;
-    flex-direction: column;
-    align-items: center;
-
-    top: calc(50px + 48px);
-
-    background-color: var(--main-bg-color);
-    box-shadow: var(--float-component-shadow);
-
-    padding: 16px 16px 16px 16px;
-    border-radius: 12px;
-    width: 240px;
-
-}
-
-.profile .avatar {
-    position: relative;
-}
-
-.profile .emoji {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 32px;
-    height: 32px;
-    background-color: var(--secondary-bg-color);
-    box-shadow: var(--float-component-shadow);
-    text-align: center;
-    line-height: 32px;
-    border-radius: 50%;
-}
-
-.profile img {
-    box-shadow: var(--float-component-shadow);
-    aspect-ratio: 1;
-    width: 128px;
-    border-radius: 50%;
-
+@media (max-width: 1024px) {
+    #home {
+        align-items: unset;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px 16px 16px 16px;
+    }
 }
 
 .articles {
@@ -268,7 +207,7 @@ function loadPagination() {
 }
 
 .item:hover {
-    transform: translateY(-2px);
+    transform: translateY(-6px);
 }
 
 .item-header {
@@ -277,7 +216,6 @@ function loadPagination() {
 
 .item-footer {
     bottom: 0px;
-    
 }
 
 .item-footer a {
@@ -289,7 +227,7 @@ function loadPagination() {
 }
 
 .item-footer a:hover {
-    transform: translateY(-2px);
+    transform: translateY(-6px);
 }
 
 .category {
@@ -314,22 +252,26 @@ function loadPagination() {
     margin-bottom: 8px;
 }
 
-.pages {
+.pagination {
     display: flex;
     flex-direction: row;
 }
 
-.pages a {
+.pagination a {
     box-shadow: var(--float-component-shadow);
-    transition: transform 0.3s ease, var(--transition-attribute, background-color 0s);
-
+    
     display: block;
     padding: 12px 12px 12px 12px;
     border-radius: 8px;
-
+    
+    transition: transform 0.3s ease, var(--transition-attribute, background-color 0s);
 }
 
-.pages .active {
+.pagination a:hover {
+    transform: translateY(-6px);
+}
+
+.pagination .active {
     background-color: var(--secondary-bg-color);
 }
 
