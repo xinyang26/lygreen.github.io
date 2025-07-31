@@ -2,7 +2,6 @@
 import Layout from './Layout.vue'
 import type { Theme } from 'vitepress'
 import './style.css'
-import './markdown.css'
 import './block.css'
 
 export default {

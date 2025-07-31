@@ -85,7 +85,7 @@ function lazyLoadCategories() {
     padding-bottom: 48px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     #category {
         align-items: unset;
         flex-direction: column;

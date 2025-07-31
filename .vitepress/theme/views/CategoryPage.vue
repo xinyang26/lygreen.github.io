@@ -140,7 +140,7 @@ async function setCurrentCategory(category: string) {
     padding-bottom: 48px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     #category-page {
         align-items: unset;
         flex-direction: column;

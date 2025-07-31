@@ -32,12 +32,11 @@ const { site, page, frontmatter } = useData()
             <CategoryPage v-else-if="frontmatter.layout === 'category-page'" />
             <Tag v-else-if="frontmatter.layout === 'tag'" />
             <TagPage v-else-if="frontmatter.layout === 'tag-page'" />
-            <div id="h-container" v-else>
-                <!-- <Sidebar /> -->
-                
-                <AppArticle />
-                <ArticleTOC />
-            </div>
+            <AppArticle v-else />
+            <!-- <div id="h-container" v-else> -->
+                <!-- <AppArticle /> -->
+                <!-- <ArticleTOC /> -->
+            <!-- </div> -->
         </main>
         <footer>
             <AppFooter />

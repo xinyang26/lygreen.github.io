@@ -177,7 +177,7 @@ function loadPagination() {
     padding-bottom: 48px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     #home {
         align-items: unset;
         flex-direction: column;

@@ -140,7 +140,7 @@ async function setCurrentTag(category: string) {
     padding-bottom: 48px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     #tag-page {
         align-items: unset;
         flex-direction: column;
