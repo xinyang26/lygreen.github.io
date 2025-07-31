@@ -67,7 +67,7 @@ function lazyLoadTags() {
             <a :href="base + 'tag/' + item" class="item" v-for="(item, index) in tag" v-bind:key="index">
                 {{ item }}
             </a>
-            <div class="loadding-trigger"></div>
+            <div class="loadding-trigger" style="flex-basis: 100%;"></div>
         </div>
     </div>
 </template>

@@ -67,7 +67,7 @@ function lazyLoadCategories() {
             <a :href="base + 'category/' + item" class="item" v-for="(item, index) in category" v-bind:key="index">
                 {{ item }}
             </a>
-            <div class="loadding-trigger"></div>
+            <div class="loadding-trigger" style="flex-basis: 100%;"></div>
         </div>
     </div>
 </template>
