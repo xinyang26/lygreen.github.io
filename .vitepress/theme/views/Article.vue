@@ -296,4 +296,12 @@ hr {
     overflow-x: auto;
 }
 
+:root #article :deep(.content span) {
+    color: var(--shiki-light);
+}
+
+:root[data-theme='dark'] #article :deep(.content span) {
+    color: var(--shiki-dark);
+}
+
 </style>
