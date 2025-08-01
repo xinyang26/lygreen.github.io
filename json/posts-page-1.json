@@ -1,0 +1,48 @@
+[
+  {
+    "title": "HomeBrew",
+    "description": "homebrew in mac",
+    "createdTime": "2025/8/1 20:36:43",
+    "updatedTime": "2025/8/1 20:46:41",
+    "readingTime": 10,
+    "category": [
+      ""
+    ],
+    "tag": [
+      ""
+    ],
+    "originBasename": "fast-power.md",
+    "url": "posts/fast-power.html"
+  },
+  {
+    "title": "各类编程语言编写 Hello World 教程",
+    "description": "编写各类编程语言的 Hello World",
+    "createdTime": "2025/7/5 12:55:23",
+    "updatedTime": "2025/8/1 20:32:53",
+    "readingTime": 2,
+    "category": [
+      "编程语言"
+    ],
+    "tag": [
+      "C",
+      "C 语言"
+    ],
+    "originBasename": "writing-hello-world.md",
+    "url": "posts/writing-hello-world.html"
+  },
+  {
+    "title": "OpenWrt 配置 WiFi 中继",
+    "description": "OpenWrt 连接其他 WiFi，然后这个路由器再自己发射出一个 WiFi 信号",
+    "createdTime": "2025/1/14 15:49:34",
+    "updatedTime": "2025/8/1 20:32:53",
+    "readingTime": 2,
+    "category": [
+      "知识分享"
+    ],
+    "tag": [
+      "OpenWrt"
+    ],
+    "originBasename": "openwrt-wifi-setting.md",
+    "url": "posts/openwrt-wifi-setting.html"
+  }
+]
