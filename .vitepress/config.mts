@@ -32,7 +32,7 @@ export default defineConfigWithTheme<ThemeConfig>({
       dark: 'github-dark',
     }
   },
-  // base: "/make-blog/",
+  base: "/lygreen.github.io/",
   head: [
     // [
     //   'link',
