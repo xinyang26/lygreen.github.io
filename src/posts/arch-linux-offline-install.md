@@ -2,13 +2,13 @@
 title: Arch Linux 离线安装教程
 description: 给一台没有网的设备安装 Arch Linux
 createdTime: '2024/10/26 00:43:41'
-updatedTime: '2025/7/13 22:23:30'
+updatedTime: '2025/8/1 20:32:53'
 readingTime: 4
 category:
   - Linux
 tag:
   - Arch Linux
-hash: 0e56aee47af23dead2d8e2c4332930c16fad4ffb99146711dd7ed65ff25049b5
+hash: 6d65b04e09ed07ce7b43c6e0d7368659b59c51d2f37fe4b0c9e7815181055a6d
 ---
 
 # 虚拟机离线安装 Arch Linux

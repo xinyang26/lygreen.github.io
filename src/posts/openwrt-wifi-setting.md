@@ -2,13 +2,13 @@
 title: OpenWrt 配置 WiFi 中继
 description: OpenWrt 连接其他 WiFi，然后这个路由器再自己发射出一个 WiFi 信号
 createdTime: '2025/1/14 15:49:34'
-updatedTime: '2025/7/13 22:23:30'
+updatedTime: '2025/8/1 20:32:53'
 readingTime: 2
 category:
   - 知识分享
 tag:
   - OpenWrt
-hash: 09f7c6727b9eaa33747c359664bfe35da7cfbc0b1639d67c8cefd85b3b6ef43d
+hash: fa64760b316efafdc5bec3851352fdcc95b86e140ffebd64bc837747f20206a7
 ---
 
 ## OpenWrt 配置 WiFi 中继
