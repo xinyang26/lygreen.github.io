@@ -1,14 +1,14 @@
 ---
-title: 'HomeBrew'
-description: 'homebrew in mac'
+title: HomeBrew
+description: homebrew in mac
 createdTime: '2025/8/1 20:36:43'
-updatedTime: '2025/8/1 20:39:39'
-readingTime: 1
+updatedTime: '2025/8/1 20:46:41'
+readingTime: 10
 category:
   - ''
 tag:
   - ''
-hash: 5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03
+hash: bd3f44962c9dd69ecccba7f7da9ff91f9255d317f94e3e5da6c3c21cd32c8b7a
 ---
 对于习惯了使用命令来完成一切的程序员来说，安装软件这种小事，自然是能够用命令解决，就不用图形界面选择。但是在 Linux 中，我们有 `yum`、`apt`、`dnf`、`pkg`等命令来完成软件的安装，macOS 却并未为我们提供一个好用的包管理器，帮助我们更好的使用 macOS。
 

@@ -11,7 +11,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   cleanUrls: true,
   lastUpdated: true,
   sitemap: {
-    hostname: "https://lygreen.github.io/",
+    hostname: "https://xinyang26.github.io/",
     lastmodDateOnly: true,
     xmlns: {
       news: false,
